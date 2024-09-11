@@ -1,0 +1,14 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="'text'">
+    <app-base-text></app-base-text>
+  </div>
+  <div *ngSwitchCase="'tel'">
+    <app-base-tel></app-base-tel>
+  </div>
+  <div *ngSwitchCase="'number'">
+    <app-base-number></app-base-number>
+  </div>
+  <div *ngSwitchCase="'password'">
+    <app-base-password></app-base-password>
+  </div>
+</div>
