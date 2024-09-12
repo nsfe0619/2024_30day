@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-base-password',
-  templateUrl: './base-password.component.html',
-  styleUrls: ['./base-password.component.scss']
+    selector: 'app-base-password',
+    templateUrl: './base-password.component.html',
+    styleUrls: ['./base-password.component.scss']
 })
-export class BasePasswordComponent implements OnInit {
+export class BasePasswordComponent implements OnInit
+{
+    @Input() placeholder: string | undefined;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void
+    {
+    }
 
 }

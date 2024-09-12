@@ -5,6 +5,7 @@ import { BaseTextComponent } from './base-text/base-text.component';
 import { BaseTelComponent } from './base-tel/base-tel.component';
 import { BaseNumberComponent } from './base-number/base-number.component';
 import { BasePasswordComponent } from './base-password/base-password.component';
+import { FieldTemplateComponent } from './field-template/field-template.component';
 
 
 
@@ -14,13 +15,14 @@ import { BasePasswordComponent } from './base-password/base-password.component';
         BaseTextComponent,
         BaseTelComponent,
         BaseNumberComponent,
-        BasePasswordComponent
+        BasePasswordComponent,
+        FieldTemplateComponent
     ],
     imports: [
         CommonModule
     ],
     exports: [
-        FieldComponent
+        FieldTemplateComponent
     ]
 })
 export class ElementModule { }

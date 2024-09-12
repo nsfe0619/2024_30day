@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-base-number',
-  templateUrl: './base-number.component.html',
-  styleUrls: ['./base-number.component.scss']
+    selector: 'app-base-number',
+    templateUrl: './base-number.component.html',
+    styleUrls: ['./base-number.component.scss']
 })
-export class BaseNumberComponent implements OnInit {
+export class BaseNumberComponent implements OnInit
+{
+    @Input() placeholder: string | undefined;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void
+    {
+    }
 
 }

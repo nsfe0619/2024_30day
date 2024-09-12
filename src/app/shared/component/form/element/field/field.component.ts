@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FieldComponent implements OnInit
 {
     @Input() type: string = 'text';
+    @Input() placeholder: string | undefined;
 
     constructor() { }
 
