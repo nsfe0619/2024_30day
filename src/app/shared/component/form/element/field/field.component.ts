@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FieldSetting } from '../field-setting.model';
 
 @Component({
     selector: 'app-field',
@@ -7,13 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FieldComponent implements OnInit
 {
-    @Input() type: string = 'text';
-    @Input() placeholder: string | undefined;
+    @Input() fieldSetting!: FieldSetting;
 
     constructor() { }
 
     ngOnInit(): void
     {
     }
-
 }

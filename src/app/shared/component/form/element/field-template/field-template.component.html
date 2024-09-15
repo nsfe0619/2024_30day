@@ -1,4 +1,7 @@
 <div style="padding-bottom: 8px">
-  <span> {{ title }} <span *ngIf="required" style="color: red">*</span>: </span>
-  <app-field [type]="type" [placeholder]="placeholder"></app-field>
+  <span>
+    {{ fieldSetting.cname }}
+    <span *ngIf="fieldSetting.required" style="color: red">*</span>:
+  </span>
+  <app-field [fieldSetting]="fieldSetting"></app-field>
 </div>
