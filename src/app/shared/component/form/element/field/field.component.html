@@ -1,16 +1,26 @@
 <div [ngSwitch]="fieldSetting.inputType">
   <div *ngSwitchCase="'text'">
-    <app-base-text [placeholder]="fieldSetting.placeholder"></app-base-text>
+    <app-base-text
+      [fieldSetting]="fieldSetting"
+      [fieldObj]="fieldObj"
+    ></app-base-text>
   </div>
   <div *ngSwitchCase="'tel'">
-    <app-base-tel [placeholder]="fieldSetting.placeholder"></app-base-tel>
+    <app-base-tel
+      [fieldSetting]="fieldSetting"
+      [fieldObj]="fieldObj"
+    ></app-base-tel>
   </div>
   <div *ngSwitchCase="'number'">
-    <app-base-number [placeholder]="fieldSetting.placeholder"></app-base-number>
+    <app-base-number
+      [fieldSetting]="fieldSetting"
+      [fieldObj]="fieldObj"
+    ></app-base-number>
   </div>
   <div *ngSwitchCase="'password'">
     <app-base-password
-      [placeholder]="fieldSetting.placeholder"
+      [fieldSetting]="fieldSetting"
+      [fieldObj]="fieldObj"
     ></app-base-password>
   </div>
 </div>

@@ -1,3 +1,8 @@
 <div>
-  <input type="number" placeholder="{{ placeholder || '數字輸入框' }}" />
+  <input
+    type="number"
+    placeholder="{{ fieldSetting.placeholder || '數字輸入框' }}"
+    [(ngModel)]="value"
+    (keyup)="valueChange()"
+  />
 </div>

@@ -9,6 +9,7 @@ import { FieldSetting } from '../field-setting.model';
 export class FieldComponent implements OnInit
 {
     @Input() fieldSetting!: FieldSetting;
+    @Input() fieldObj!: any;
 
     constructor() { }
 

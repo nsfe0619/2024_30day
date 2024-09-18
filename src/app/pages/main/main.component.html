@@ -1,3 +1,5 @@
 <div *ngFor="let fieldSetting of fieldSettings">
-  <app-field-template [fieldSetting]="fieldSetting"> </app-field-template>
+  <app-field-template [fieldSetting]="fieldSetting" [fieldObj]="fieldObj">
+  </app-field-template>
+  <!-- {{ fieldObj[fieldSetting.name] }} -->
 </div>

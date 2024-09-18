@@ -6,6 +6,7 @@ import { BaseTelComponent } from './base-tel/base-tel.component';
 import { BaseNumberComponent } from './base-number/base-number.component';
 import { BasePasswordComponent } from './base-password/base-password.component';
 import { FieldTemplateComponent } from './field-template/field-template.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,9 @@ import { FieldTemplateComponent } from './field-template/field-template.componen
         FieldTemplateComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule,
+
     ],
     exports: [
         FieldTemplateComponent

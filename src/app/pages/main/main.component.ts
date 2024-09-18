@@ -8,6 +8,7 @@ import { FieldSetting } from 'src/app/shared/component/form/element/field-settin
 })
 export class MainComponent implements OnInit
 {
+    fieldObj!: any;
 
     fieldSettings: FieldSetting[] = [
         {
@@ -16,6 +17,7 @@ export class MainComponent implements OnInit
             inputType: 'text',
             placeholder: '請輸入文字',
             required: true,
+            defaultValue: '123'
         },
         {
             name: 'number1',
@@ -23,6 +25,7 @@ export class MainComponent implements OnInit
             inputType: 'number',
             placeholder: '請輸入數字',
             required: true,
+            defaultValue: '123'
         },
         {
             name: 'tel1',
@@ -44,6 +47,12 @@ export class MainComponent implements OnInit
 
     ngOnInit(): void
     {
+        // 用reduce將name作為key值 defaultValue作為Value
+        this.fieldObj = this.fieldSettings.reduce((acc: any, item) =>
+        {
+            acc[item.name] = item.defaultValue || '';
+            return acc;
+        }, {});
     }
 
 }
