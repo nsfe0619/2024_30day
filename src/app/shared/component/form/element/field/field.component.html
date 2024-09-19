@@ -23,4 +23,10 @@
       [fieldObj]="fieldObj"
     ></app-base-password>
   </div>
+  <div *ngSwitchCase="'select'">
+    <app-base-select
+      [fieldSetting]="fieldSetting"
+      [fieldObj]="fieldObj"
+    ></app-base-select>
+  </div>
 </div>

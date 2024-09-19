@@ -40,6 +40,19 @@ export class MainComponent implements OnInit
             inputType: 'password',
             placeholder: '請輸入',
             required: true,
+        },
+        {
+            name: 'select1',
+            cname: '下拉選單1',
+            inputType: 'select',
+            placeholder: '請選擇',
+            required: true,
+            defaultValue: '1',
+            options: [
+                { label: '選項1', value: '1' },
+                { label: '選項2', value: '2' },
+                { label: '選項3', value: '3' },
+            ]
         }
     ];
 

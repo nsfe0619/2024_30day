@@ -1,3 +1,4 @@
+import { OptionItem } from "./element.module";
 
 export interface FieldSetting
 {
@@ -7,4 +8,5 @@ export interface FieldSetting
     placeholder: string;
     required: boolean;
     defaultValue?: string | undefined;
+    options?: OptionItem[];
 }

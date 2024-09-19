@@ -1,0 +1,7 @@
+<div>
+  <select (change)="valueChange()" [(ngModel)]="value">
+    <option *ngFor="let option of fieldSetting.options" [value]="option.value">
+      {{ option.label }}
+    </option>
+  </select>
+</div>
