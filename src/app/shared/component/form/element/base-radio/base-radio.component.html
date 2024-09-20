@@ -1,0 +1,12 @@
+<div>
+  <label *ngFor="let option of fieldSetting?.options">
+    <input
+      type="radio"
+      [name]="fieldSetting.name"
+      [value]="option.value"
+      [(ngModel)]="value"
+      (change)="valueChange()"
+    />
+    <span><b></b>{{ option.label }}</span>
+  </label>
+</div>

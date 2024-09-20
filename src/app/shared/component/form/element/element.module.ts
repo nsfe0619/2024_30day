@@ -8,6 +8,7 @@ import { BasePasswordComponent } from './base-password/base-password.component';
 import { FieldTemplateComponent } from './field-template/field-template.component';
 import { FormsModule } from '@angular/forms';
 import { BaseSelectComponent } from './base-select/base-select.component';
+import { BaseRadioComponent } from './base-radio/base-radio.component';
 
 
 
@@ -19,7 +20,8 @@ import { BaseSelectComponent } from './base-select/base-select.component';
         BaseNumberComponent,
         BasePasswordComponent,
         FieldTemplateComponent,
-        BaseSelectComponent
+        BaseSelectComponent,
+        BaseRadioComponent
     ],
     imports: [
         CommonModule,
