@@ -1,0 +1,12 @@
+<div>
+  <label class="checkbox" *ngFor="let option of options">
+    <input
+      type="checkbox"
+      [checked]="option.checked"
+      [name]="fieldSetting.name"
+      value="{{ option.value }}"
+      (change)="valueChange(option.value)"
+    />
+    <span> <b></b>{{ option.label }}</span>
+  </label>
+</div>

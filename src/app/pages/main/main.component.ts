@@ -66,7 +66,20 @@ export class MainComponent implements OnInit
                 { label: '選項2', value: '2' },
                 { label: '選項3', value: '3' },
             ]
-        }
+        },
+        {
+            name: 'checkbox1',
+            cname: '多選1',
+            inputType: 'checkbox',
+            placeholder: '',
+            required: true,
+            defaultValue: '1',
+            options: [
+                { label: '選項1', value: '1' },
+                { label: '選項2', value: '2' },
+                { label: '選項3', value: '3' },
+            ]
+        },
     ];
 
     constructor() { }

@@ -9,6 +9,7 @@ import { FieldTemplateComponent } from './field-template/field-template.componen
 import { FormsModule } from '@angular/forms';
 import { BaseSelectComponent } from './base-select/base-select.component';
 import { BaseRadioComponent } from './base-radio/base-radio.component';
+import { BaseCheckboxComponent } from './base-checkbox/base-checkbox.component';
 
 
 
@@ -21,7 +22,8 @@ import { BaseRadioComponent } from './base-radio/base-radio.component';
         BasePasswordComponent,
         FieldTemplateComponent,
         BaseSelectComponent,
-        BaseRadioComponent
+        BaseRadioComponent,
+        BaseCheckboxComponent
     ],
     imports: [
         CommonModule,
