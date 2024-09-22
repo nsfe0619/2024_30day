@@ -2,7 +2,7 @@
   <input
     type="text"
     placeholder="{{ fieldSetting.placeholder || '文字輸入框' }}"
-    [(ngModel)]="value"
-    (keyup)="valueChange()"
+    [value]="value"
+    (input)="onInput($event)"
   />
 </div>

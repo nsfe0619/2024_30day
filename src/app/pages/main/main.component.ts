@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FieldSetting } from 'src/app/shared/component/form/element/field-setting.model';
 
 @Component({
@@ -6,10 +7,9 @@ import { FieldSetting } from 'src/app/shared/component/form/element/field-settin
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit
-{
+export class MainComponent implements OnInit {
     fieldObj!: any;
-
+    fieldForm!: FormGroup;
     fieldSettings: FieldSetting[] = [
         {
             name: 'text1',
@@ -82,16 +82,19 @@ export class MainComponent implements OnInit
         },
     ];
 
-    constructor() { }
+    constructor(private fb: FormBuilder) { }
 
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // 用reduce將name作為key值 defaultValue作為Value
-        this.fieldObj = this.fieldSettings.reduce((acc: any, item) =>
-        {
+        this.fieldObj = this.fieldSettings.reduce((acc: any, item) => {
             acc[item.name] = item.defaultValue || '';
             return acc;
         }, {});
+
+        this.fieldForm = this.fb.group(this.fieldObj);
     }
 
+    getControl(columnName:string){
+        return this.fieldForm.get(columnName) as FormControl
+    }
 }

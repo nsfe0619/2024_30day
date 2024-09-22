@@ -6,7 +6,7 @@ import { BaseTelComponent } from './base-tel/base-tel.component';
 import { BaseNumberComponent } from './base-number/base-number.component';
 import { BasePasswordComponent } from './base-password/base-password.component';
 import { FieldTemplateComponent } from './field-template/field-template.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseSelectComponent } from './base-select/base-select.component';
 import { BaseRadioComponent } from './base-radio/base-radio.component';
 import { BaseCheckboxComponent } from './base-checkbox/base-checkbox.component';
@@ -28,7 +28,7 @@ import { BaseCheckboxComponent } from './base-checkbox/base-checkbox.component';
     imports: [
         CommonModule,
         FormsModule,
-
+        ReactiveFormsModule
     ],
     exports: [
         FieldTemplateComponent

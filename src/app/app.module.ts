@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ElementModule } from './shared/component/form/element/element.module';
 import { MainComponent } from './pages/main/main.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import { MainComponent } from './pages/main/main.component';
     ],
     imports: [
         BrowserModule,
+        ReactiveFormsModule,
         AppRoutingModule,
         ElementModule
     ],
