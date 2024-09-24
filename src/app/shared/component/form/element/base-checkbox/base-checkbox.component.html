@@ -5,7 +5,7 @@
       [checked]="option.checked"
       [name]="fieldSetting.name"
       value="{{ option.value }}"
-      (change)="valueChange(option.value)"
+      (change)="valueChange($event)"
     />
     <span> <b></b>{{ option.label }}</span>
   </label>

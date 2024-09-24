@@ -1,8 +1,11 @@
 <div [formGroup]="fieldForm">
   <div *ngFor="let fieldSetting of fieldSettings">
-    <app-field-template [fieldSetting]="fieldSetting" [fieldObj]="fieldObj" 
-    [control]="getControl(fieldSetting.name)">
+    <app-field-template
+      [fieldSetting]="fieldSetting"
+      [fieldObj]="fieldObj"
+      [control]="getControl(fieldSetting.name)"
+    >
     </app-field-template>
-    {{ getControl(fieldSetting.name).value }}
+    <!-- {{ getControl(fieldSetting.name).value }} -->
   </div>
 </div>

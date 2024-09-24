@@ -1,6 +1,5 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FieldSetting } from '../field-setting.model';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseElementComponent } from '../base-element.component';
 
 @Component({
@@ -15,9 +14,10 @@ import { BaseElementComponent } from '../base-element.component';
         }
     ]
 })
-export class BaseSelectComponent extends BaseElementComponent {
-
-    onSelectChange(event: Event): void {
+export class BaseSelectComponent extends BaseElementComponent
+{
+    override valueChange(event: Event): void
+    {
         const select = event.target as HTMLSelectElement;
         this.value = select.value;
         this.onChange(this.value);

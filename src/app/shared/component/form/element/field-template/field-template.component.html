@@ -3,5 +3,6 @@
     {{ fieldSetting.cname }}
     <span *ngIf="fieldSetting.required" style="color: red">*</span>:
   </span>
-  <app-field [fieldSetting]="fieldSetting" [fieldObj]="fieldObj" [control]="control"></app-field>
+  <!-- 傳入control 移除fieldObj -->
+  <app-field [fieldSetting]="fieldSetting" [control]="control"></app-field>
 </div>

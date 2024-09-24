@@ -3,6 +3,6 @@
     type="text"
     placeholder="{{ fieldSetting.placeholder || '文字輸入框' }}"
     [value]="value"
-    (input)="onInput($event)"
+    (input)="valueChange($event)"
   />
 </div>

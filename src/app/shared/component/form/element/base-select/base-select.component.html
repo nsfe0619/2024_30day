@@ -1,5 +1,5 @@
 <div>
-  <select [value]="value" (change)="onSelectChange($event)">
+  <select [value]="value" (change)="valueChange($event)">
     <option *ngFor="let option of fieldSetting.options" [value]="option.value">
       {{ option.label }}
     </option>

@@ -1,29 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FieldSetting } from '../field-setting.model';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseElementComponent } from '../base-element.component';
 
 @Component({
     selector: 'app-base-radio',
     templateUrl: './base-radio.component.html',
-    styleUrls: ['./base-radio.component.scss']
+    styleUrls: ['./base-radio.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => BaseRadioComponent),
+            multi: true
+        }
+    ]
 })
-export class BaseRadioComponent implements OnInit
+export class BaseRadioComponent extends BaseElementComponent
 {
-
-    @Input() fieldSetting!: FieldSetting;
-    @Input() fieldObj!: any;
-    value!: string;
-
-    constructor() { }
-
-    ngOnInit(): void
-    {
-        this.value = this.fieldObj[this.fieldSetting.name];
-    }
-
-    valueChange()
-    {
-        console.log('value', this.value)
-        this.fieldObj[this.fieldSetting.name] = this.value;
-    }
-
 }

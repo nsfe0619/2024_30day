@@ -8,19 +8,13 @@ import { BaseElementComponent } from '../base-element.component';
     templateUrl: './base-password.component.html',
     styleUrls: ['./base-password.component.scss'],
     providers: [
-      {
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => BasePasswordComponent),
-        multi: true
-      }
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => BasePasswordComponent),
+            multi: true
+        }
     ]
 })
-export class BasePasswordComponent extends BaseElementComponent {
-
-    onInput(event: Event): void {
-        const input = event.target as HTMLInputElement;
-        console.log('value',input.value)
-        this.onChange(input.value);
-        this.onTouch();
-    }
+export class BasePasswordComponent extends BaseElementComponent
+{
 }

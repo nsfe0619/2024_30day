@@ -4,8 +4,8 @@
       type="radio"
       [name]="fieldSetting.name"
       [value]="option.value"
-      [(ngModel)]="value"
-      (change)="valueChange()"
+      [checked]="option.value == value"
+      (change)="valueChange($event)"
     />
     <span><b></b>{{ option.label }}</span>
   </label>

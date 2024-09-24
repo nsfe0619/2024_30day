@@ -8,19 +8,13 @@ import { BaseElementComponent } from '../base-element.component';
     templateUrl: './base-number.component.html',
     styleUrls: ['./base-number.component.scss'],
     providers: [
-      {
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => BaseNumberComponent),
-        multi: true
-      }
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => BaseNumberComponent),
+            multi: true
+        }
     ]
 })
-export class BaseNumberComponent extends BaseElementComponent {
-
-    onInput(event: Event): void {
-        const input = event.target as HTMLInputElement;
-        console.log('value',input.value)
-        this.onChange(input.value);
-        this.onTouch();
-    }
+export class BaseNumberComponent extends BaseElementComponent
+{
 }

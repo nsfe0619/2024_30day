@@ -7,7 +7,8 @@ import { FieldSetting } from 'src/app/shared/component/form/element/field-settin
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit
+{
     fieldObj!: any;
     fieldForm!: FormGroup;
     fieldSettings: FieldSetting[] = [
@@ -73,7 +74,7 @@ export class MainComponent implements OnInit {
             inputType: 'checkbox',
             placeholder: '',
             required: true,
-            defaultValue: '1',
+            defaultValue: '1,2',
             options: [
                 { label: '選項1', value: '1' },
                 { label: '選項2', value: '2' },
@@ -84,9 +85,11 @@ export class MainComponent implements OnInit {
 
     constructor(private fb: FormBuilder) { }
 
-    ngOnInit(): void {
+    ngOnInit(): void
+    {
         // 用reduce將name作為key值 defaultValue作為Value
-        this.fieldObj = this.fieldSettings.reduce((acc: any, item) => {
+        this.fieldObj = this.fieldSettings.reduce((acc: any, item) =>
+        {
             acc[item.name] = item.defaultValue || '';
             return acc;
         }, {});
@@ -94,7 +97,8 @@ export class MainComponent implements OnInit {
         this.fieldForm = this.fb.group(this.fieldObj);
     }
 
-    getControl(columnName:string){
+    getControl(columnName: string)
+    {
         return this.fieldForm.get(columnName) as FormControl
     }
 }

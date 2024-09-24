@@ -13,12 +13,6 @@ import { BaseElementComponent } from '../base-element.component';
             multi: true
         },]
 })
-export class BaseTextComponent extends BaseElementComponent {
-
-    onInput(event: Event): void {
-        const input = event.target as HTMLInputElement;
-        console.log('value', input.value)
-        this.onChange(input.value);
-        this.onTouch();
-    }
+export class BaseTextComponent extends BaseElementComponent
+{
 }
