@@ -1,26 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FieldSetting } from '../field-setting.model';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseElementComponent } from '../base-element.component';
 
 @Component({
     selector: 'app-base-number',
     templateUrl: './base-number.component.html',
-    styleUrls: ['./base-number.component.scss']
+    styleUrls: ['./base-number.component.scss'],
+    providers: [
+      {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => BaseNumberComponent),
+        multi: true
+      }
+    ]
 })
-export class BaseNumberComponent implements OnInit
-{
-    @Input() fieldSetting!: FieldSetting;
-    @Input() fieldObj!: any;
-    value!: string;
+export class BaseNumberComponent extends BaseElementComponent {
 
-    constructor() { }
-
-    ngOnInit(): void
-    {
-        this.value = this.fieldObj[this.fieldSetting.name];
-    }
-
-    valueChange()
-    {
-        this.fieldObj[this.fieldSetting.name] = this.value;
+    onInput(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        console.log('value',input.value)
+        this.onChange(input.value);
+        this.onTouch();
     }
 }

@@ -1,29 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FieldSetting } from '../field-setting.model';
+import { BaseElementComponent } from '../base-element.component';
 
 @Component({
     selector: 'app-base-checkbox',
     templateUrl: './base-checkbox.component.html',
     styleUrls: ['./base-checkbox.component.scss']
 })
-export class BaseCheckboxComponent implements OnInit
-{
-
-    @Input() fieldSetting!: FieldSetting;
-    @Input() fieldObj!: any;
+export class BaseCheckboxComponent extends BaseElementComponent {
     checkedValue!: string[];
     options!: any[];
-
-    constructor() { }
-
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         this.checkedValue = this.fieldObj[this.fieldSetting.name].split(',');
         this.options = this.fieldSetting.options?.map(opt => { return { ...opt, checked: !!this.checkedValue.find(c => c === opt.value) } }) || []
     }
 
-    valueChange(value: string)
-    {
+    valueChange(value: string) {
         let thisOption = this.options.find(opt => opt.value == value);
         thisOption.checked = !thisOption.checked;
 

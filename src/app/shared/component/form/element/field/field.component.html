@@ -10,36 +10,42 @@
     <app-base-tel
       [fieldSetting]="fieldSetting"
       [fieldObj]="fieldObj"
+      [formControl]="control"
     ></app-base-tel>
   </div>
   <div *ngSwitchCase="'number'">
     <app-base-number
       [fieldSetting]="fieldSetting"
       [fieldObj]="fieldObj"
+      [formControl]="control"
     ></app-base-number>
   </div>
   <div *ngSwitchCase="'password'">
     <app-base-password
       [fieldSetting]="fieldSetting"
       [fieldObj]="fieldObj"
+      [formControl]="control"
     ></app-base-password>
   </div>
   <div *ngSwitchCase="'select'">
     <app-base-select
       [fieldSetting]="fieldSetting"
       [fieldObj]="fieldObj"
+      [formControl]="control"
     ></app-base-select>
   </div>
   <div *ngSwitchCase="'radio'">
     <app-base-radio
       [fieldSetting]="fieldSetting"
       [fieldObj]="fieldObj"
+      [formControl]="control"
     ></app-base-radio>
   </div>
   <div *ngSwitchCase="'checkbox'">
     <app-base-checkbox
       [fieldSetting]="fieldSetting"
       [fieldObj]="fieldObj"
+      [formControl]="control"
     ></app-base-checkbox>
   </div>
 </div>

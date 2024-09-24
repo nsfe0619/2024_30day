@@ -1,27 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FieldSetting } from '../field-setting.model';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseElementComponent } from '../base-element.component';
 
 @Component({
     selector: 'app-base-select',
     templateUrl: './base-select.component.html',
-    styleUrls: ['./base-select.component.scss']
+    styleUrls: ['./base-select.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => BaseSelectComponent),
+            multi: true
+        }
+    ]
 })
-export class BaseSelectComponent implements OnInit
-{
-    @Input() fieldSetting!: FieldSetting;
-    @Input() fieldObj!: any;
-    value!: string;
+export class BaseSelectComponent extends BaseElementComponent {
 
-    constructor() { }
-
-    ngOnInit(): void
-    {
-        this.value = this.fieldObj[this.fieldSetting.name];
+    onSelectChange(event: Event): void {
+        const select = event.target as HTMLSelectElement;
+        this.value = select.value;
+        this.onChange(this.value);
+        this.onTouch();
     }
-
-    valueChange()
-    {
-        this.fieldObj[this.fieldSetting.name] = this.value;
-    }
-
 }
