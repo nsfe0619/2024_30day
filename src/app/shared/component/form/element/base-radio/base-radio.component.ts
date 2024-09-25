@@ -1,5 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FieldSetting } from '../field-setting.model';
+import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseElementComponent } from '../base-element.component';
 
@@ -17,4 +16,9 @@ import { BaseElementComponent } from '../base-element.component';
 })
 export class BaseRadioComponent extends BaseElementComponent
 {
+    onRadioChange(value: string): void {
+        this.control.setValue(value);
+        this.onChange(value); // 更新 ControlValueAccessor 的值
+        this.onTouch();       // 標記為已觸碰
+      }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FieldSetting } from 'src/app/shared/component/form/element/field-setting.model';
 
 @Component({
@@ -18,7 +18,8 @@ export class MainComponent implements OnInit
             inputType: 'text',
             placeholder: '請輸入文字',
             required: true,
-            defaultValue: '123'
+            defaultValue: '123',
+            validator:[Validators.required,Validators.max(100)]
         },
         {
             name: 'number1',

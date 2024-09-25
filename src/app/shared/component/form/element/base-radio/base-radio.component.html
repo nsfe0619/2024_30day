@@ -4,8 +4,8 @@
       type="radio"
       [name]="fieldSetting.name"
       [value]="option.value"
-      [checked]="option.value == value"
-      (change)="valueChange($event)"
+      [checked]="option.value == control.value"
+      (change)="onRadioChange(option.value)"
     />
     <span><b></b>{{ option.label }}</span>
   </label>

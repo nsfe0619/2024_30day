@@ -14,29 +14,27 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         }
     ]
 })
-export class BaseCheckboxComponent extends BaseElementComponent
-{
+export class BaseCheckboxComponent extends BaseElementComponent {
     checkedValue!: string[];
     options!: any[];
 
-    override writeValue(value: string | string[]): void
-    {
-        this.value = value;
-        this.checkedValue = typeof this.value == 'string' ? this.value.split(',') : this.value;
-        this.options = this.fieldSetting.options?.map(opt => { return { ...opt, checked: !!this.checkedValue.find(c => c === opt.value) } }) || []
-
+    override ngOnInit(): void {
+        // console.log('control',this.control)
+        // 監聽 FormControl 的值變化
+        if (this.control) {
+            this.checkedValue = typeof this.control.value == 'string' ? this.control.value.split(',') : this.control.value;
+            this.options = this.fieldSetting.options?.map(opt => { return { ...opt, checked: !!this.checkedValue.find(c => c === opt.value) } }) || []
+        }
     }
-
-    override valueChange(event: Event)
-    {
-        const input = event.target as HTMLInputElement;
-        let thisOption = this.options.find(opt => opt.value == input.value);
+    onCheckboxChange(value:string) {
+        let thisOption = this.options.find(opt => opt.value == value);
         thisOption.checked = !thisOption.checked;
 
         this.checkedValue = this.options.filter(opt => opt.checked).map(opt => opt.value);
-        this.value = this.checkedValue.join(',');
+        let returnValue = this.checkedValue.join(',');
 
-        this.onChange(this.value);
+        this.control.setValue(returnValue)
+        this.onChange(returnValue);
         this.onTouch();
     }
 }

@@ -1,41 +1,53 @@
-import { Directive, Input } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Directive, Input, OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl } from '@angular/forms';
 import { FieldSetting } from './field-setting.model';
+import { Subscription } from 'rxjs';
 
 @Directive()
-export abstract class BaseElementComponent implements ControlValueAccessor
-{
+export abstract class BaseElementComponent implements ControlValueAccessor, OnInit, OnDestroy {
     @Input() fieldSetting!: FieldSetting;
-    @Input() value: string | string[] = '';
+    @Input() control!: FormControl; // 接收 FormControl
+    protected valueChangesSubscription: Subscription = new Subscription();  // 用來追蹤訂閱
+
 
     onChange: any = () => { };
     onTouch: any = () => { };
 
-    writeValue(value: string | string[]): void
-    {
-        this.value = value;
+    ngOnInit(): void {
+        // console.log('control',this.control)
+        // 監聽 FormControl 的值變化
+        if (this.control) {
+            this.valueChangesSubscription = this.control.valueChanges.subscribe((newValue: any) => {
+                console.log('newValue',newValue)
+                this.onChange(newValue);
+            });
+        }
+    }
+    ngOnDestroy(): void {
+        if (this.valueChangesSubscription) {
+            this.valueChangesSubscription.unsubscribe();  // 取消訂閱
+        }
     }
 
-    registerOnChange(fn: any): void
-    {
+    writeValue(value: string | string[]): void {
+        if (this.control) {
+            this.control.setValue(value, { emitEvent: false });
+        }
+    }
+
+    registerOnChange(fn: any): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn: any): void
-    {
+    registerOnTouched(fn: any): void {
         this.onTouch = fn;
     }
 
-    setDisabledState(isDisabled: boolean): void
-    {
-        // 可以根據需求實現禁用邏輯
-    }
-
-    valueChange(event: Event): void
-    {
-        const input = event.target as HTMLInputElement;
-        this.value = input.value;
-        this.onChange(input.value);
-        this.onTouch();
+    setDisabledState(isDisabled: boolean): void {
+        if (isDisabled) {
+            this.control.disable();
+        } else {
+            this.control.enable();
+        }
     }
 }

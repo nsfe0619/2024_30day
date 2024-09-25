@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseElementComponent } from '../base-element.component';
 
@@ -13,6 +13,6 @@ import { BaseElementComponent } from '../base-element.component';
             multi: true
         },]
 })
-export class BaseTextComponent extends BaseElementComponent
+export class BaseTextComponent extends BaseElementComponent implements OnInit
 {
 }

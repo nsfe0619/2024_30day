@@ -2,7 +2,6 @@
   <input
     type="tel"
     placeholder="{{ fieldSetting.placeholder || '電話輸入框' }}"
-    [value]="value"
-    (input)="valueChange($event)"
+    [formControl]="control"
   />
 </div>

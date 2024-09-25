@@ -1,8 +1,3 @@
 <div>
-  <input
-    type="number"
-    placeholder="{{ fieldSetting.placeholder || '數字輸入框' }}"
-    [value]="value"
-    (input)="valueChange($event)"
-  />
+  <input type="number" placeholder="{{ fieldSetting.placeholder || '數字輸入框' }}" [formControl]="control" />
 </div>

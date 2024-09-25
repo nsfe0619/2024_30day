@@ -9,4 +9,5 @@ export interface FieldSetting
     required: boolean;
     defaultValue?: string | undefined;
     options?: OptionItem[];
+    validator?:any[]
 }

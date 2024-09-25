@@ -1,6 +1,5 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FieldSetting } from '../field-setting.model';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef } from '@angular/core';
+import {  NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseElementComponent } from '../base-element.component';
 
 @Component({

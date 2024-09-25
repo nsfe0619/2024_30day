@@ -1,11 +1,11 @@
-<div>
-  <label class="checkbox" *ngFor="let option of options">
+<div>123
+  <label class="checkbox" *ngFor="let option of options">333
     <input
       type="checkbox"
       [checked]="option.checked"
       [name]="fieldSetting.name"
       value="{{ option.value }}"
-      (change)="valueChange($event)"
+      (change)="onCheckboxChange(option.value)"
     />
     <span> <b></b>{{ option.label }}</span>
   </label>

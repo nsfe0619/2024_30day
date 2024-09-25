@@ -16,11 +16,4 @@ import { BaseElementComponent } from '../base-element.component';
 })
 export class BaseSelectComponent extends BaseElementComponent
 {
-    override valueChange(event: Event): void
-    {
-        const select = event.target as HTMLSelectElement;
-        this.value = select.value;
-        this.onChange(this.value);
-        this.onTouch();
-    }
 }
