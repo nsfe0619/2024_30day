@@ -9,4 +9,5 @@
     />
     <span><b></b>{{ option.label }}</span>
   </label>
+  <span *ngIf="getError()" style="color: red">{{ getError() }}</span>
 </div>

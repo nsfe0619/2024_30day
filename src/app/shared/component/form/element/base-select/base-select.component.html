@@ -1,7 +1,11 @@
 <div>
-  <select [formControl]="control">
+  <select
+    [formControl]="control"
+    [ngClass]="{ 'is-invalid': control.invalid && control.touched }"
+  >
     <option *ngFor="let option of fieldSetting.options" [value]="option.value">
       {{ option.label }}
     </option>
   </select>
+  <span *ngIf="getError()" style="color: red">{{ getError() }}</span>
 </div>

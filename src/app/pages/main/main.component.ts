@@ -19,7 +19,7 @@ export class MainComponent implements OnInit
             placeholder: '請輸入文字',
             required: true,
             defaultValue: '123',
-            validator:[Validators.required,Validators.max(100)]
+            validator: [Validators.required, Validators.maxLength(10)]
         },
         {
             name: 'number1',
@@ -91,7 +91,11 @@ export class MainComponent implements OnInit
         // 用reduce將name作為key值 defaultValue作為Value
         this.fieldObj = this.fieldSettings.reduce((acc: any, item) =>
         {
-            acc[item.name] = item.defaultValue || '';
+            acc[item.name] = [item.defaultValue || ''];
+            if (item.validator && item.validator.length > 0)
+            {
+                acc[item.name].push({ validators: item.validator })
+            }
             return acc;
         }, {});
 

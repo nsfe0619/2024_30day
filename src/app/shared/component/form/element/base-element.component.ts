@@ -52,6 +52,23 @@ export abstract class BaseElementComponent implements ControlValueAccessor, OnIn
         this.onTouch = fn;
     }
 
+    getError()
+    {
+        let errors = this.control.errors;
+        if (errors)
+        {
+            if (errors['required'])
+                return '必填';
+            else if (errors['maxlength'])
+                return '長度不可超過' + errors['maxlength']['requiredLength'];
+            else
+                return '';
+        } else
+        {
+            return '';
+        }
+    }
+
     setDisabledState(isDisabled: boolean): void
     {
         if (isDisabled)

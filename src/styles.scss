@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.is-invalid {
+    border: 1px solid red;
+    outline: none;
+}
+.is-invalid:focus {
+    border-color: red;
+    outline: none;
+    /* 移除預設的藍色 outline，讓紅框更顯眼 */
+}

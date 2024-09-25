@@ -1,3 +1,9 @@
 <div>
-  <input type="number" placeholder="{{ fieldSetting.placeholder || '數字輸入框' }}" [formControl]="control" />
+  <input
+    type="number"
+    placeholder="{{ fieldSetting.placeholder || '數字輸入框' }}"
+    [formControl]="control"
+    [ngClass]="{ 'is-invalid': control.invalid && control.touched }"
+  />
+  <span *ngIf="getError()" style="color: red">{{ getError() }}</span>
 </div>
