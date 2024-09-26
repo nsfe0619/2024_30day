@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseSelectComponent } from './base-select/base-select.component';
 import { BaseRadioComponent } from './base-radio/base-radio.component';
 import { BaseCheckboxComponent } from './base-checkbox/base-checkbox.component';
+import { FormInputComponent } from './form-input/form-input.component';
 
 
 
@@ -23,7 +24,8 @@ import { BaseCheckboxComponent } from './base-checkbox/base-checkbox.component';
         FieldTemplateComponent,
         BaseSelectComponent,
         BaseRadioComponent,
-        BaseCheckboxComponent
+        BaseCheckboxComponent,
+        FormInputComponent
     ],
     imports: [
         CommonModule,
@@ -31,7 +33,7 @@ import { BaseCheckboxComponent } from './base-checkbox/base-checkbox.component';
         ReactiveFormsModule
     ],
     exports: [
-        FieldTemplateComponent
+        FormInputComponent
     ]
 })
 export class ElementModule { }

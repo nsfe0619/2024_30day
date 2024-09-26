@@ -10,8 +10,7 @@ import { FormControl } from '@angular/forms';
 export class FieldTemplateComponent implements OnInit
 {
     @Input() fieldSetting!: FieldSetting;
-    @Input() fieldObj!: any;
-    @Input() control!:FormControl;
+    @Input() control!: FormControl;
 
     constructor() { }
 

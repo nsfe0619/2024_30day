@@ -1,3 +1,4 @@
+import { FormGroup } from "@angular/forms";
 import { OptionItem } from "./element.module";
 
 export interface FieldSetting
@@ -9,5 +10,12 @@ export interface FieldSetting
     required: boolean;
     defaultValue?: string | undefined;
     options?: OptionItem[];
-    validator?:any[]
+    validator?: any[]
+}
+
+export interface PageSetting
+{
+    title: string;
+    form?: FormGroup;
+    fieldSettings: FieldSetting[];
 }

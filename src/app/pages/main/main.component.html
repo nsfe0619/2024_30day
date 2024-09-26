@@ -1,11 +1,5 @@
-<div [formGroup]="fieldForm">
-  <div *ngFor="let fieldSetting of fieldSettings">
-    <app-field-template
-      [fieldSetting]="fieldSetting"
-      [fieldObj]="fieldObj"
-      [control]="getControl(fieldSetting.name)"
-    >
-    </app-field-template>
-    <!-- {{ getControl(fieldSetting.name).value }} -->
-  </div>
+<div>
+  <app-form-input [pageSetting]="pageSettings[page]"> </app-form-input>
+  <button (click)="pagePrev()">上一頁</button>
+  <button (click)="pageNext()">下一頁</button>
 </div>

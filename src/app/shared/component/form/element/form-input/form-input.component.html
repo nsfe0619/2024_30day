@@ -1,0 +1,11 @@
+<div [formGroup]="pageSetting.form!" *ngIf="pageSetting.form">
+  {{ pageSetting.title }}
+  <div *ngFor="let fieldSetting of pageSetting.fieldSettings">
+    <app-field-template
+      [fieldSetting]="fieldSetting"
+      [control]="getControl(fieldSetting.name)"
+    >
+    </app-field-template>
+    <!-- {{ getControl(fieldSetting.name).value }} -->
+  </div>
+</div>
