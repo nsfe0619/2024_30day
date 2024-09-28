@@ -3,8 +3,29 @@
     border: 1px solid red;
     outline: none;
 }
+
 .is-invalid:focus {
     border-color: red;
     outline: none;
     /* 移除預設的藍色 outline，讓紅框更顯眼 */
+}
+
+input[type="text"] {
+    @apply w-full;
+}
+
+input[type="tel"] {
+    @apply w-full;
+}
+
+input[type="number"] {
+    @apply w-full;
+}
+
+input[type="password"] {
+    @apply w-full;
+}
+
+select {
+    @apply w-full;
 }
