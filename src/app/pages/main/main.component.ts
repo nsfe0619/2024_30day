@@ -14,6 +14,37 @@ export class MainComponent implements OnInit
         title: '第一頁',
         fieldSettings: [
             {
+                name: 'area1',
+                cname: '電話欄位',
+                inputType: 'text',
+                groupName: 'phoneGroup1',
+                groupType: 'phone-area',
+                placeholder: '',
+                defaultValue: '00',
+                validator: [Validators.maxLength(3)]
+            },
+            {
+                name: 'phone1',
+                cname: '電話欄位',
+                inputType: 'text',
+                groupName: 'phoneGroup1',
+                groupType: 'phone-number',
+                placeholder: '0000000',
+                defaultValue: '',
+                validator: [Validators.maxLength(10)]
+            },
+            {
+                name: 'ext1',
+                cname: '電話欄位',
+                inputType: 'text',
+                groupName: 'phoneGroup1',
+                groupType: 'phone-ext',
+                placeholder: '0000',
+                required: true,
+                defaultValue: '',
+                validator: [Validators.maxLength(4)]
+            },
+            {
                 name: 'text1',
                 cname: '文字欄位1',
                 inputType: 'text',

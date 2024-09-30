@@ -11,22 +11,30 @@ export class FormInputComponent implements OnChanges
 {
     @Input() pageSetting!: PageSetting
     fieldObj!: object;
+    innerForm = this.fb.group({});
     constructor(private fb: FormBuilder) { }
 
     ngOnChanges(): void
     {
-        // 用reduce將name作為key值 defaultValue作為Value
-
-        this.pageSetting.form = this.fb.group(this.pageSetting.fieldSettings.reduce((acc: any, item) =>
+        this.pageSetting.form = this.fb.group({});
+        this.pageSetting.fieldSettings.forEach(setting =>
         {
-            acc[item.name] = [item.defaultValue || ''];
-            if (item.validator && item.validator.length > 0)
+            let newControl = this.fb.control(setting.defaultValue, { validators: setting.validator });
+            if (!setting.groupName)
             {
-                acc[item.name].push({ validators: item.validator })
+                this.innerForm.addControl(setting.name, newControl);
+            } else
+            {
+                if (!this.innerForm.contains(setting.groupName))
+                {
+                    this.innerForm.addControl(setting.groupName, new FormGroup({}));
+                }
+                (this.innerForm.get(setting.groupName) as FormGroup).addControl(setting.groupType!, this.fb.control(setting.defaultValue, { validators: setting.validator }))
             }
-            return acc;
-        }, {}));
-        console.log('pageSetting', this.pageSetting)
+            (this.pageSetting.form as FormGroup).addControl(setting.name, newControl);
+        })
+        // console.log('innerForm', this.innerForm.value);
+        // console.log('this.pageSetting', this.pageSetting.form.value);
     }
 
     getControl(columnName: string)

@@ -6,8 +6,10 @@ export interface FieldSetting
     name: string;
     cname: string;
     inputType: string;
+    groupName?: string;
+    groupType?: string;
     placeholder?: string;
-    required: boolean;
+    required?: boolean;
     defaultValue?: string | undefined;
     options?: OptionItem[];
     validator?: any[]
