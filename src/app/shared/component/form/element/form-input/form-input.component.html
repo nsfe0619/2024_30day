@@ -1,9 +1,24 @@
 <div>
   {{ pageSetting.title }}
   <div [formGroup]="pageSetting.form!" *ngIf="pageSetting.form" class="row">
-    <div *ngFor="let fieldSetting of pageSetting.fieldSettings" class="col-6">
-      <app-field-template [fieldSetting]="fieldSetting" [control]="getControl(fieldSetting.name)">
-      </app-field-template>
+    <div *ngFor="let fieldObj of getGroupList(innerForm)" class="col-6">
+      <ng-container *ngIf="typeof(fieldObj) === 'string'">
+        <app-field-template
+          [fieldSetting]="getSettingByName(pageSetting.fieldSettings, fieldObj)"
+          [control]="getControl(fieldObj)"
+        >
+        </app-field-template>
+      </ng-container>
+
+      <ng-container *ngIf="typeof(fieldObj) !== 'string'">
+        <app-combo-phone
+          [fieldSettings]="
+            getSettingsByForm(pageSetting.fieldSettings, fieldObj)
+          "
+          [inputForm]="fieldObj"
+        >
+        </app-combo-phone>
+      </ng-container>
       <!-- {{ getControl(fieldSetting.name).value }} -->
     </div>
   </div>

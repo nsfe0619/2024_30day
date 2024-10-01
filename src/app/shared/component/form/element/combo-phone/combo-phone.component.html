@@ -1,0 +1,27 @@
+<div>
+  <div class="row">
+    <span>
+      {{ getSettingByGroupType("phone-number").cname }}
+    </span>
+    <div class="col-3">
+      <app-base-tel
+        [fieldSetting]="getSettingByGroupType('phone-area')"
+        [control]="getControl(inputForm, 'phone-area')"
+      ></app-base-tel>
+    </div>
+    -
+    <div class="col-4">
+      <app-base-tel
+        [fieldSetting]="getSettingByGroupType('phone-number')"
+        [control]="getControl(inputForm, 'phone-number')"
+      ></app-base-tel>
+    </div>
+    #
+    <div class="col-4">
+      <app-base-tel
+        [fieldSetting]="getSettingByGroupType('phone-ext')"
+        [control]="getControl(inputForm, 'phone-ext')"
+      ></app-base-tel>
+    </div>
+  </div>
+</div>

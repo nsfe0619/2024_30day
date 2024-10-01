@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { PageSetting } from '../field-setting.model';
+import { FieldSetting, PageSetting } from '../field-setting.model';
 
 @Component({
     selector: 'app-form-input',
@@ -33,8 +33,6 @@ export class FormInputComponent implements OnChanges
             }
             (this.pageSetting.form as FormGroup).addControl(setting.name, newControl);
         })
-        // console.log('innerForm', this.innerForm.value);
-        // console.log('this.pageSetting', this.pageSetting.form.value);
     }
 
     getControl(columnName: string)
@@ -42,4 +40,38 @@ export class FormInputComponent implements OnChanges
         return this.pageSetting.form?.get(columnName) as FormControl
     }
 
+    // 取得該區域欄位列表
+    getGroupList(group: FormGroup): string | any
+    {
+        let Result = Object.keys(group.value).map(obj =>
+        {
+            let innerControl = group.get(obj)
+            if (innerControl?.value !== null && typeof innerControl?.value === 'object')
+            {
+                return innerControl
+            } else 
+            {
+                return obj;
+            }
+        });
+        return Result;
+    }
+    // 用name取得setting
+    getSettingByName(fieldSetting: any, name: string)
+    {
+        return fieldSetting.find((obj: any) => obj.name == name) || { cname: '', name: '', inputType: '' }
+    }
+
+    // 篩選組合元件用的setting
+    getSettingsByForm(settings: FieldSetting[], fg: FormGroup): FieldSetting[]
+    {
+        return Object.keys(fg.value).map(v =>
+        {
+            return settings.find(setting => setting.groupType === v) as FieldSetting;
+        })
+    }
+    typeof(value: any)
+    {
+        return typeof value;
+    }
 }
