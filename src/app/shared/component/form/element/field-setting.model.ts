@@ -10,6 +10,7 @@ export interface FieldSetting
     groupType?: string;
     placeholder?: string;
     required?: boolean;
+    disabled?: boolean;
     defaultValue?: string | undefined;
     options?: OptionItem[];
     validator?: any[]

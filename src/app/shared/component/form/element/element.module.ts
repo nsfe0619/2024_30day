@@ -12,6 +12,8 @@ import { BaseRadioComponent } from './base-radio/base-radio.component';
 import { BaseCheckboxComponent } from './base-checkbox/base-checkbox.component';
 import { FormInputComponent } from './form-input/form-input.component';
 import { ComboPhoneComponent } from './combo-phone/combo-phone.component';
+import { ComboRadioTextComponent } from './combo-radio-text/combo-radio-text.component';
+import { ComboFieldTemplateComponent } from './combo-field-template/combo-field-template.component';
 
 
 
@@ -27,7 +29,9 @@ import { ComboPhoneComponent } from './combo-phone/combo-phone.component';
         BaseRadioComponent,
         BaseCheckboxComponent,
         FormInputComponent,
-        ComboPhoneComponent
+        ComboPhoneComponent,
+        ComboRadioTextComponent,
+        ComboFieldTemplateComponent
     ],
     imports: [
         CommonModule,

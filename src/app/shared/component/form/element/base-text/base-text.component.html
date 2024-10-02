@@ -3,6 +3,7 @@
     type="text"
     placeholder="{{ fieldSetting.placeholder || '文字輸入框' }}"
     [formControl]="control"
+    [attr.disabled]="fieldSetting.disabled ? true : null"
     [ngClass]="{ 'is-invalid': control.invalid && control.touched }"
   />
   <span *ngIf="getError()" style="color: red">{{ getError() }}</span>

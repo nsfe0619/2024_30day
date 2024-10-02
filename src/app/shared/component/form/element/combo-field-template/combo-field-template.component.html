@@ -1,0 +1,13 @@
+<div>
+  <div *ngIf="findFieldSetting('phone')">
+    <app-combo-phone [fieldSettings]="fieldSettings" [inputForm]="inputForm">
+    </app-combo-phone>
+  </div>
+  <div *ngIf="findFieldSetting('radioText')">
+    <app-combo-radio-text
+      [fieldSettings]="fieldSettings"
+      [inputForm]="inputForm"
+    >
+    </app-combo-radio-text>
+  </div>
+</div>

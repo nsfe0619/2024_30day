@@ -3,6 +3,7 @@
     type="tel"
     placeholder="{{ fieldSetting.placeholder || '電話輸入框' }}"
     [formControl]="control"
+    [attr.disabled]="fieldSetting.disabled ? '' : null"
     [ngClass]="{ 'is-invalid': control.invalid && control.touched }"
   />
   <span *ngIf="getError()" style="color: red">{{ getError() }}</span>

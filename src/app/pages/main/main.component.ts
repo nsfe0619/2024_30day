@@ -14,6 +14,28 @@ export class MainComponent implements OnInit
         title: '第一頁',
         fieldSettings: [
             {
+                name: 'radioTextRadio1',
+                cname: '控制輸入欄位',
+                inputType: 'radio',
+                defaultValue: 'true',
+                groupName: 'radioText1',
+                groupType: 'radioText-radio',
+                options: [
+                    { label: '是', value: 'true' },
+                    { label: '否', value: 'false' },
+                ]
+            },
+            {
+                name: 'radioTextText1',
+                cname: '控制輸入欄位',
+                inputType: 'text',
+                groupName: 'radioText1',
+                groupType: 'radioText-text',
+                placeholder: '勾選後才可輸入',
+                defaultValue: '',
+                validator: [Validators.maxLength(3)]
+            },
+            {
                 name: 'area1',
                 cname: '電話欄位',
                 inputType: 'text',

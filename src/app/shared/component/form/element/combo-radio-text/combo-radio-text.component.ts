@@ -1,15 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FieldSetting } from '../field-setting.model';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ShareService } from 'src/app/shared/service/share.service';
+import { FieldSetting } from '../field-setting.model';
 
 @Component({
-    selector: 'app-combo-phone',
-    templateUrl: './combo-phone.component.html',
-    styleUrls: ['./combo-phone.component.scss']
+    selector: 'app-combo-radio-text',
+    templateUrl: './combo-radio-text.component.html',
+    styleUrls: ['./combo-radio-text.component.scss']
 })
-export class ComboPhoneComponent implements OnInit
+export class ComboRadioTextComponent implements OnInit
 {
+
     @Input() fieldSettings!: FieldSetting[];
     @Input() inputForm!: FormGroup;
 
@@ -29,4 +30,5 @@ export class ComboPhoneComponent implements OnInit
     {
         return this.shareService.getSetting(this.fieldSettings, groupType, 'groupType');
     }
+
 }

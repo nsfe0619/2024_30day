@@ -1,0 +1,21 @@
+<div>
+  <div class="row">
+    <span>
+      {{ getSettingByGroupType("radioText-radio").cname }}
+    </span>
+    <div class="col-4">
+      <app-field
+        [fieldSetting]="getSettingByGroupType('radioText-radio')"
+        [control]="getControl(inputForm, 'radioText-radio')"
+      ></app-field>
+    </div>
+
+    <div class="col-8">
+      <app-field
+        [fieldSetting]="getSettingByGroupType('radioText-text')"
+        [control]="getControl(inputForm, 'radioText-text')"
+        [disabled]="getControl(inputForm, 'radioText-radio').value == 'false'"
+      ></app-field>
+    </div>
+  </div>
+</div>

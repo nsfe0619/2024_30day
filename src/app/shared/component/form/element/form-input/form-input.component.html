@@ -2,23 +2,24 @@
   {{ pageSetting.title }}
   <div [formGroup]="pageSetting.form!" *ngIf="pageSetting.form" class="row">
     <div *ngFor="let fieldObj of getGroupList(innerForm)" class="col-6">
-      <ng-container *ngIf="typeof(fieldObj) === 'string'">
+      <ng-container *ngIf="shareService.typeof(fieldObj) === 'string'">
         <app-field-template
-          [fieldSetting]="getSettingByName(pageSetting.fieldSettings, fieldObj)"
-          [control]="getControl(fieldObj)"
+          [fieldSetting]="
+            shareService.getSetting(pageSetting.fieldSettings, fieldObj)
+          "
+          [control]="shareService.getControl(pageSetting.form, fieldObj)"
         >
         </app-field-template>
         <!-- {{ getControl(fieldObj).value }} -->
       </ng-container>
-
-      <ng-container *ngIf="typeof(fieldObj) !== 'string'">
-        <app-combo-phone
+      <ng-container *ngIf="shareService.typeof(fieldObj) !== 'string'">
+        <app-combo-field-template
           [fieldSettings]="
-            getSettingsByForm(pageSetting.fieldSettings, fieldObj)
+            shareService.getSettingsByForm(pageSetting.fieldSettings, fieldObj)
           "
           [inputForm]="fieldObj"
         >
-        </app-combo-phone>
+        </app-combo-field-template>
       </ng-container>
     </div>
   </div>

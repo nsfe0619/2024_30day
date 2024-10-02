@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { FieldSetting } from '../field-setting.model';
 import { FormControl } from '@angular/forms';
 
@@ -7,14 +7,16 @@ import { FormControl } from '@angular/forms';
     templateUrl: './field.component.html',
     styleUrls: ['./field.component.scss']
 })
-export class FieldComponent implements OnInit
+export class FieldComponent implements OnChanges
 {
     @Input() fieldSetting!: FieldSetting;
     @Input() control!: FormControl;
+    @Input() disabled = false;
 
     constructor() { }
 
-    ngOnInit(): void
+    ngOnChanges(): void
     {
+        this.fieldSetting.disabled = this.disabled;
     }
 }
