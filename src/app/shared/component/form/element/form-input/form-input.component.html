@@ -8,6 +8,7 @@
           [control]="getControl(fieldObj)"
         >
         </app-field-template>
+        <!-- {{ getControl(fieldObj).value }} -->
       </ng-container>
 
       <ng-container *ngIf="typeof(fieldObj) !== 'string'">
@@ -19,7 +20,6 @@
         >
         </app-combo-phone>
       </ng-container>
-      <!-- {{ getControl(fieldSetting.name).value }} -->
     </div>
   </div>
 </div>

@@ -18,9 +18,9 @@ export class ComboPhoneComponent implements OnInit
     {
     }
 
-    getControl(group: FormGroup, name: string)
+    getControl(group: FormGroup, groupType: string)
     {
-        return group?.get(name) as FormControl
+        return (group?.get(this.getSettingByGroupType(groupType).name) as FormControl)|| new FormControl()
     }
 
     // 用name取得setting
