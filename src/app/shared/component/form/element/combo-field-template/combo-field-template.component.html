@@ -10,4 +10,8 @@
     >
     </app-combo-radio-text>
   </div>
+  <div *ngIf="findFieldSetting('address')">
+    <app-combo-address [fieldSettings]="fieldSettings" [inputForm]="inputForm">
+    </app-combo-address>
+  </div>
 </div>

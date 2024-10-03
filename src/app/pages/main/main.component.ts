@@ -14,6 +14,30 @@ export class MainComponent implements OnInit
         title: '第一頁',
         fieldSettings: [
             {
+                name: 'addressCity',
+                cname: '地址',
+                inputType: 'select',
+                groupName: 'address1',
+                groupType: 'address-city',
+                options: []
+            },
+            {
+                name: 'addressArea',
+                cname: '地址行政區',
+                inputType: 'select',
+                groupName: 'address1',
+                groupType: 'address-area',
+                options: []
+            },
+            {
+                name: 'address',
+                cname: '地址',
+                inputType: 'text',
+                groupName: 'address1',
+                groupType: 'address',
+                options: []
+            },
+            {
                 name: 'radioTextRadio1',
                 cname: '控制輸入欄位',
                 inputType: 'radio',

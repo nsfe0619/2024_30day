@@ -1,0 +1,25 @@
+<div>
+  <div class="row">
+    <span>
+      {{ getSettingByGroupType("address").cname }}
+    </span>
+    <div class="col-3">
+      <app-field
+        [fieldSetting]="getSettingByGroupType('address-city')"
+        [control]="getControl(inputForm, 'address-city')"
+      ></app-field>
+    </div>
+    <div class="col-4">
+      <app-field
+        [fieldSetting]="getSettingByGroupType('address-area')"
+        [control]="getControl(inputForm, 'address-area')"
+      ></app-field>
+    </div>
+    <div class="col-4">
+      <app-field
+        [fieldSetting]="getSettingByGroupType('address')"
+        [control]="getControl(inputForm, 'address')"
+      ></app-field>
+    </div>
+  </div>
+</div>

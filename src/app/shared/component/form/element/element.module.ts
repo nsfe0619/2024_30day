@@ -14,6 +14,7 @@ import { FormInputComponent } from './form-input/form-input.component';
 import { ComboPhoneComponent } from './combo-phone/combo-phone.component';
 import { ComboRadioTextComponent } from './combo-radio-text/combo-radio-text.component';
 import { ComboFieldTemplateComponent } from './combo-field-template/combo-field-template.component';
+import { ComboAddressComponent } from './combo-address/combo-address.component';
 
 
 
@@ -31,7 +32,8 @@ import { ComboFieldTemplateComponent } from './combo-field-template/combo-field-
         FormInputComponent,
         ComboPhoneComponent,
         ComboRadioTextComponent,
-        ComboFieldTemplateComponent
+        ComboFieldTemplateComponent,
+        ComboAddressComponent
     ],
     imports: [
         CommonModule,
