@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FieldSetting, PageSetting } from '../field-setting.model';
 import { Subject, takeUntil } from 'rxjs';
 import { ShareService } from 'src/app/shared/service/share.service';
@@ -25,7 +25,24 @@ export class FormInputComponent implements OnChanges
         this.innerForm = this.fb.group({});
         this.pageSetting.fieldSettings.forEach(setting =>
         {
-            let newControl = this.fb.control(setting.defaultValue, { validators: setting.validator }) as FormControl;
+            let newControl = this.fb.control(setting.defaultValue) as FormControl;
+            if (setting.validator && setting.validator?.length > 0)
+            {
+                setting.validator?.forEach((v: string) =>
+                {
+                    let keyword = v.split(':')
+                    switch (keyword[0])
+                    {
+                        case 'required':
+                            setting.required = true;
+                            newControl.addValidators(Validators.required);
+                            break;
+                        case 'maxLength':
+                            newControl.addValidators(Validators.maxLength(Number(keyword[1])));
+                            break;
+                    }
+                })
+            }
 
             (this.pageSetting.form as FormGroup).addControl(setting.name, newControl);
             if (!setting.groupName)

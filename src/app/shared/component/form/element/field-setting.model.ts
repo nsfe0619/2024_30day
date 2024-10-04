@@ -13,7 +13,7 @@ export interface FieldSetting
     disabled?: boolean;
     defaultValue?: string | undefined;
     options?: OptionItem[];
-    validator?: any[]
+    validator?: string[]
 }
 
 export interface PageSetting
