@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { FieldSetting, PageSetting } from '../field-setting.model';
+import { Component, Input, OnChanges } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { PageSetting } from '../field-setting.model';
 import { Subject, takeUntil } from 'rxjs';
 import { ShareService } from 'src/app/shared/service/share.service';
+import { ValidatorService } from 'src/app/shared/service/validator.service';
 
 @Component({
     selector: 'app-form-input',
@@ -15,7 +16,8 @@ export class FormInputComponent implements OnChanges
     fieldObj!: object;
     innerForm = this.fb.group({});
     constructor(private fb: FormBuilder,
-        public shareService: ShareService
+        public shareService: ShareService,
+        private validatorService: ValidatorService
     ) { }
     private destroy$ = new Subject<void>(); // 用來發出結束通知
 
@@ -26,22 +28,11 @@ export class FormInputComponent implements OnChanges
         this.pageSetting.fieldSettings.forEach(setting =>
         {
             let newControl = this.fb.control(setting.defaultValue) as FormControl;
+
             if (setting.validator && setting.validator?.length > 0)
             {
-                setting.validator?.forEach((v: string) =>
-                {
-                    let keyword = v.split(':')
-                    switch (keyword[0])
-                    {
-                        case 'required':
-                            setting.required = true;
-                            newControl.addValidators(Validators.required);
-                            break;
-                        case 'maxLength':
-                            newControl.addValidators(Validators.maxLength(Number(keyword[1])));
-                            break;
-                    }
-                })
+                if (!!setting.validator.find(v => v == 'required')) setting.required = true;
+                newControl.addValidators(this.validatorService.getValidators(setting.validator))
             }
 
             (this.pageSetting.form as FormGroup).addControl(setting.name, newControl);

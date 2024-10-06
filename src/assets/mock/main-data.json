@@ -46,7 +46,8 @@
           "groupName": "radioText1",
           "groupType": "radioText-text",
           "placeholder": "勾選後才可輸入",
-          "defaultValue": ""
+          "defaultValue": "",
+          "validator": ["requiredTrueWithField:radioTextRadio1"]
         },
         {
           "name": "area1",
