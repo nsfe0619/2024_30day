@@ -1,0 +1,25 @@
+<table [formGroup]="inputForm">
+  <thead>
+    <tr>
+      <th *ngFor="let title of titleArr">
+        {{ title }}
+      </th>
+    </tr>
+  </thead>
+  <tbody formArrayName="{{ listKey }}">
+    <tr
+      *ngFor="let row of inputFormArray.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <td>
+        <input formControlName="list-name" />
+      </td>
+      <td>
+        <input formControlName="list-phone" />
+      </td>
+      <td>
+        <input formControlName="list-mail" />
+      </td>
+    </tr>
+  </tbody>
+</table>

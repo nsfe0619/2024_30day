@@ -11,7 +11,7 @@ export interface FieldSetting
     placeholder?: string;
     required?: boolean;
     disabled?: boolean;
-    defaultValue?: string | undefined;
+    defaultValue?: string | string[] | undefined;
     options?: OptionItem[];
     validator?: string[]
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { PageSetting } from '../field-setting.model';
 import { Subject, takeUntil } from 'rxjs';
 import { ShareService } from 'src/app/shared/service/share.service';
@@ -35,6 +35,16 @@ export class FormInputComponent implements OnChanges
                 newControl.addValidators(this.validatorService.getValidators(setting.validator))
             }
 
+            if (setting.groupType == 'list' && !!setting.groupName)
+            {
+                if (!this.innerForm.contains(setting.groupName))
+                {
+                    let newFormArray = new FormArray([])
+                    this.innerForm.addControl(setting.groupName, newFormArray);
+                    this.pageSetting.form?.addControl(setting.groupName, newFormArray);
+                }
+                return
+            }
             (this.pageSetting.form as FormGroup).addControl(setting.name, newControl);
             if (!setting.groupName)
             {
@@ -45,15 +55,16 @@ export class FormInputComponent implements OnChanges
                 {
                     this.innerForm.addControl(setting.groupName, new FormGroup({}));
                 }
-                (this.innerForm.get(setting.groupName) as FormGroup).addControl(setting.name!, this.pageSetting.form?.get(setting.name))
+                (this.innerForm.get(setting.groupName) as FormGroup).addControl(setting.name!, this.pageSetting.form?.get(setting.name));
+
+                (this.pageSetting.form?.get(setting.name) as FormGroup)
+                    .valueChanges.pipe(takeUntil(this.destroy$)).subscribe(v =>
+                    {
+                        this.pageSetting.form?.updateValueAndValidity();
+                    })
             }
 
-            (this.pageSetting.form?.get(setting.name) as FormGroup)
-                .valueChanges.pipe(takeUntil(this.destroy$)).subscribe(v =>
-                {
-                    this.pageSetting.form?.updateValueAndValidity();
-                })
-        })
+        });
     }
     ngOnDestroy()
     {
@@ -65,12 +76,21 @@ export class FormInputComponent implements OnChanges
     // 取得該區域欄位列表
     getGroupList(group: FormGroup): string | any
     {
+
         let Result = Object.keys(group.value).map(obj =>
         {
             let innerControl = group.get(obj)
             if (innerControl?.value !== null && typeof innerControl?.value === 'object')
             {
-                return innerControl
+                if (Array.isArray(innerControl.value))
+                {
+                    let fg = this.fb.group({});
+                    fg.addControl(obj, innerControl);
+                    return fg
+                } else
+                {
+                    return innerControl
+                }
             } else 
             {
                 return obj;
@@ -78,5 +98,23 @@ export class FormInputComponent implements OnChanges
         });
         return Result;
     }
+    getListSettings(formArrayName: string)
+    {
+        let listName = this.pageSetting.fieldSettings.find(f => f.name == formArrayName)?.groupName;
+        return this.pageSetting.fieldSettings.filter(f => f.groupName == listName);
+    }
 
+    getGroupSetting(fieldObj: any)
+    {
+        let firstObjKey = Object.keys(fieldObj.value)[0];
+        let firstObj = this.pageSetting.fieldSettings.find(setting => setting.name == firstObjKey);
+        if (firstObj?.inputType == 'list')
+        {
+            let groupSettings = this.pageSetting.fieldSettings.filter(setting => setting.groupName == firstObj?.groupName)
+            return groupSettings;
+        } else
+        {
+            return this.shareService.getSettingsByForm(this.pageSetting.fieldSettings, fieldObj)
+        }
+    }
 }

@@ -15,7 +15,7 @@ import { ComboPhoneComponent } from './combo-phone/combo-phone.component';
 import { ComboRadioTextComponent } from './combo-radio-text/combo-radio-text.component';
 import { ComboFieldTemplateComponent } from './combo-field-template/combo-field-template.component';
 import { ComboAddressComponent } from './combo-address/combo-address.component';
-
+import { ListComponent } from './list/list.component';
 
 
 @NgModule({
@@ -33,12 +33,13 @@ import { ComboAddressComponent } from './combo-address/combo-address.component';
         ComboPhoneComponent,
         ComboRadioTextComponent,
         ComboFieldTemplateComponent,
-        ComboAddressComponent
+        ComboAddressComponent,
+        ListComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     exports: [
         FormInputComponent

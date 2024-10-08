@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FieldSetting } from '../field-setting.model';
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-combo-field-template',
@@ -11,8 +11,12 @@ export class ComboFieldTemplateComponent implements OnInit
 {
 
     @Input() fieldSettings!: FieldSetting[];
-    @Input() inputForm!: FormGroup;
+    @Input() inputForm!: FormGroup | FormArray;
     constructor() { }
+    get inputFormGroup()
+    {
+        return this.inputForm as FormGroup;
+    }
 
     ngOnInit(): void
     {

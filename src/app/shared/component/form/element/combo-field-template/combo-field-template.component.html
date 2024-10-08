@@ -1,17 +1,27 @@
 <div>
   <div *ngIf="findFieldSetting('phone')">
-    <app-combo-phone [fieldSettings]="fieldSettings" [inputForm]="inputForm">
+    <app-combo-phone
+      [fieldSettings]="fieldSettings"
+      [inputForm]="inputFormGroup"
+    >
     </app-combo-phone>
   </div>
   <div *ngIf="findFieldSetting('radioText')">
     <app-combo-radio-text
       [fieldSettings]="fieldSettings"
-      [inputForm]="inputForm"
+      [inputForm]="inputFormGroup"
     >
     </app-combo-radio-text>
   </div>
   <div *ngIf="findFieldSetting('address')">
-    <app-combo-address [fieldSettings]="fieldSettings" [inputForm]="inputForm">
+    <app-combo-address
+      [fieldSettings]="fieldSettings"
+      [inputForm]="inputFormGroup"
+    >
     </app-combo-address>
+  </div>
+  <div *ngIf="findFieldSetting('list')">
+    <app-list [fieldSettings]="fieldSettings" [inputForm]="inputFormGroup">
+    </app-list>
   </div>
 </div>
