@@ -11,7 +11,7 @@ export class ComboFieldTemplateComponent implements OnInit
 {
 
     @Input() fieldSettings!: FieldSetting[];
-    @Input() inputForm!: FormGroup | FormArray;
+    @Input() inputForm!: FormGroup;
     constructor() { }
     get inputFormGroup()
     {
