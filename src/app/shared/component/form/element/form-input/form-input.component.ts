@@ -24,19 +24,21 @@ export class FormInputComponent implements OnChanges
 
     ngOnChanges(): void
     {
-        this.pageSetting.form = this.fb.group({});
+        if (!this.pageSetting.form)
+        {
+            this.pageSetting.form = this.fb.group({});
+        }
         this.innerForm = this.fb.group({});
         this.pageSetting.fieldSettings.forEach(setting =>
         {
-            let newControl = this.fb.control(setting.defaultValue) as FormControl;
+            let newControl = this.fb.control(this.pageSetting.form?.get(setting.name)?.value || setting.defaultValue) as FormControl;
 
             if (setting.validator && setting.validator?.length > 0)
             {
                 if (!!setting.validator.find(v => v == 'required')) setting.required = true;
                 newControl.addValidators(this.validatorService.getValidators(setting.validator))
             }
-
-            if (setting.groupType == 'list' && !!setting.groupName)
+            if (setting.groupType?.startsWith('list') && !!setting.groupName)
             {
                 if (!this.innerForm.contains(setting.groupName))
                 {
@@ -66,6 +68,7 @@ export class FormInputComponent implements OnChanges
             }
 
         });
+
         this.getGroupList(this.innerForm);
     }
     ngOnDestroy()

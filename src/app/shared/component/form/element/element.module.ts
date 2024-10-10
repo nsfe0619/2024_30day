@@ -17,6 +17,7 @@ import { ComboFieldTemplateComponent } from './combo-field-template/combo-field-
 import { ComboAddressComponent } from './combo-address/combo-address.component';
 import { ListComponent } from './list/list.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { ListPopComponent } from './list-pop/list-pop.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { DialogComponent } from './dialog/dialog.component';
         ComboFieldTemplateComponent,
         ComboAddressComponent,
         ListComponent,
-        DialogComponent
+        DialogComponent,
+        ListPopComponent
     ],
     imports: [
         CommonModule,

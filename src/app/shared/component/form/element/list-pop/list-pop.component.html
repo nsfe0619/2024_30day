@@ -1,0 +1,42 @@
+<table [formGroup]="inputForm" style="width: 100%">
+  <thead>
+    <tr>
+      <th *ngFor="let title of titleArr">
+        {{ title }}
+      </th>
+      <th>
+        <button (click)="openAdd()">新增</button>
+      </th>
+    </tr>
+  </thead>
+  <tbody formArrayName="{{ listKey }}">
+    <tr
+      *ngFor="let row of inputFormArray.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <ng-container
+        *ngTemplateOutlet="
+          displayRow;
+          context: { inTeplateForm: row, index: i }
+        "
+      ></ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #displayRow let-fg="inTeplateForm" let-i="index">
+  <td *ngFor="let key of Object.keys(fg.value)">
+    {{ fg.get(key)?.value }}
+  </td>
+  <button (click)="openEdit(i)">編輯</button>
+  <button (click)="delete(i)">刪除</button>
+</ng-template>
+
+<ng-template #add>
+  <app-form-input [pageSetting]="dialogPagingSetting"></app-form-input>
+  <button (click)="addSubmit()">送出</button>
+</ng-template>
+<ng-template #edit>
+  <app-form-input [pageSetting]="dialogPagingSetting"></app-form-input>
+  <button (click)="editSubmit()">送出</button>
+</ng-template>

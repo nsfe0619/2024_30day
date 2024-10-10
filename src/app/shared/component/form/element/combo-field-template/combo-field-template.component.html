@@ -20,8 +20,12 @@
     >
     </app-combo-address>
   </div>
-  <div *ngIf="findFieldSetting('list')">
+  <div *ngIf="findFieldSetting('listBasic')">
     <app-list [fieldSettings]="fieldSettings" [inputForm]="inputFormGroup">
     </app-list>
+  </div>
+  <div *ngIf="findFieldSetting('listPopup')">
+    <app-list-pop [fieldSettings]="fieldSettings" [inputForm]="inputFormGroup">
+    </app-list-pop>
   </div>
 </div>

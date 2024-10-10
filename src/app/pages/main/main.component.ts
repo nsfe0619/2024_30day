@@ -39,8 +39,4 @@ export class MainComponent implements OnInit
         if (this.page > 0)
             this.page = Number(this.page) - 1;
     }
-    open()
-    {
-        this.dialogService.openDialog();
-    }
 }

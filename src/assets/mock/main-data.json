@@ -8,7 +8,7 @@
           "cname": "聯絡人",
           "inputType": "list",
           "groupName": "list1",
-          "groupType": "list",
+          "groupType": "listBasic",
           "defaultValue": [
             {
               "list-name": "聯絡人姓名",
@@ -22,7 +22,7 @@
           "cname": "姓名",
           "inputType": "text",
           "groupName": "list1",
-          "groupType": "list",
+          "groupType": "listBasic",
           "placeholder": "請輸入姓名"
         },
         {
@@ -30,7 +30,7 @@
           "cname": "電話",
           "inputType": "tel",
           "groupName": "list1",
-          "groupType": "list",
+          "groupType": "listBasic",
           "placeholder": "請輸入電話"
         },
         {
@@ -38,7 +38,45 @@
           "cname": "信箱",
           "inputType": "text",
           "groupName": "list1",
-          "groupType": "list",
+          "groupType": "listBasic",
+          "placeholder": "請輸入信箱"
+        },
+        {
+          "name": "list2",
+          "cname": "聯絡人",
+          "inputType": "list",
+          "groupName": "list2",
+          "groupType": "listPopup",
+          "defaultValue": [
+            {
+              "list-name": "聯絡人姓名",
+              "list-phone": "0987654321",
+              "list-mail": "aa@bb.cc"
+            }
+          ]
+        },
+        {
+          "name": "list-name",
+          "cname": "姓名",
+          "inputType": "text",
+          "groupName": "list2",
+          "groupType": "listPopup",
+          "placeholder": "請輸入姓名"
+        },
+        {
+          "name": "list-phone",
+          "cname": "電話",
+          "inputType": "tel",
+          "groupName": "list2",
+          "groupType": "listPopup",
+          "placeholder": "請輸入電話"
+        },
+        {
+          "name": "list-mail",
+          "cname": "信箱",
+          "inputType": "text",
+          "groupName": "list2",
+          "groupType": "listPopup",
           "placeholder": "請輸入信箱"
         },
         {

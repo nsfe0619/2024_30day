@@ -10,6 +10,8 @@ export class DialogComponent implements OnInit
 {
 
     isVisible: boolean = false; // 本地的彈窗狀態
+    currentTemplate: any;       // 接收來自服務的模板
+    templateName!: string;
 
     constructor(private dialogService: DialogService) { }
 
@@ -19,6 +21,11 @@ export class DialogComponent implements OnInit
         this.dialogService.dialogVisibility$.subscribe(isVisible =>
         {
             this.isVisible = isVisible;
+        });
+        // 訂閱模板內容
+        this.dialogService.template$.subscribe(template =>
+        {
+            this.currentTemplate = template;
         });
     }
 
