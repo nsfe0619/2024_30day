@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FieldSetting } from '../field-setting.model';
 import { ValidatorService } from 'src/app/shared/service/validator.service';
+import { ShareService } from 'src/app/shared/service/share.service';
 
 @Component({
     selector: 'app-list',
@@ -15,6 +16,8 @@ export class ListComponent implements OnInit
     innerFormArray!: FormArray;
     subFormGroup!: FormGroup;
     titleArr!: string[];
+    Object = Object;
+    editRowNum = 1;
 
     get listKey()
     {
@@ -28,15 +31,17 @@ export class ListComponent implements OnInit
 
     constructor(
         private fb: FormBuilder,
-        private validatorService: ValidatorService
+        private validatorService: ValidatorService,
+        public shareService: ShareService,
     ) { }
 
     ngOnInit(): void
     {
+        if (this.subFormGroup) return;
         this.titleArr = [];
         this.innerFormArray = new FormArray<FormGroup>([]);
-        this.subFormGroup = new FormGroup({});
         let defaultValue!: string[];
+        this.subFormGroup = new FormGroup({});
 
         this.fieldSettings.forEach(setting =>
         {
@@ -56,18 +61,46 @@ export class ListComponent implements OnInit
                 defaultValue = setting.defaultValue! as string[];
             }
         })
+        if (this.inputFormArray.length > 0) return;
         defaultValue.forEach((value: any) =>
         {
             this.subFormGroup.reset();
             this.subFormGroup.patchValue(value);
-            this.innerFormArray.push(this.subFormGroup);
+            this.innerFormArray.push(this.fb.group(this.subFormGroup.value));
         })
         this.inputFormArray.clear();
 
-        this.innerFormArray.controls.forEach((group: AbstractControl) =>
+        this.innerFormArray.value.forEach((group: AbstractControl) =>
         {
-            this.inputFormArray.push(group);
+            this.inputFormArray.push(this.fb.group(group));
         });
+
+        this.subFormGroup.reset();
     }
 
+    add()
+    {
+        this.inputFormArray.push(this.fb.group(this.subFormGroup.value));
+        this.editRowNum = this.inputFormArray.value.length;
+    }
+    delete(index: number)
+    {
+        this.inputFormArray.removeAt(index);
+    }
+    cancel()
+    {
+        this.subFormGroup.reset();
+        this.editRowNum = this.inputFormArray.value.length;
+    }
+    edit(index: number)
+    {
+        this.editRowNum = index;
+        this.subFormGroup.patchValue(this.inputFormArray.controls[index].value);
+    }
+    save(index: number)
+    {
+        this.inputFormArray.controls[index].patchValue(this.subFormGroup.value);
+        this.subFormGroup.reset();
+        this.editRowNum = this.inputFormArray.value.length;
+    }
 }

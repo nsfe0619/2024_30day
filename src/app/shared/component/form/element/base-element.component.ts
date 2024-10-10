@@ -16,7 +16,6 @@ export abstract class BaseElementComponent implements ControlValueAccessor, OnIn
 
     ngOnInit(): void
     {
-        // console.log('control',this.control)
         // 監聽 FormControl 的值變化
         if (this.control)
         {

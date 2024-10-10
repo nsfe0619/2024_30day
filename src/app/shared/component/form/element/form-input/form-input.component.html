@@ -2,7 +2,7 @@
   {{ pageSetting.title }}
   <div [formGroup]="pageSetting.form!" *ngIf="pageSetting.form" class="row">
     <div
-      *ngFor="let fieldObj of getGroupList(innerForm)"
+      *ngFor="let fieldObj of groupList"
       [ngClass]="{
         'col-6': shareService.typeof(fieldObj) === 'string',
         'col-12': shareService.typeof(fieldObj) !== 'string'

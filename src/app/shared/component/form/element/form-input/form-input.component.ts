@@ -14,6 +14,7 @@ export class FormInputComponent implements OnChanges
 {
     @Input() pageSetting!: PageSetting
     fieldObj!: object;
+    groupList!: any[];
     innerForm = this.fb.group({});
     constructor(private fb: FormBuilder,
         public shareService: ShareService,
@@ -65,6 +66,7 @@ export class FormInputComponent implements OnChanges
             }
 
         });
+        this.getGroupList(this.innerForm);
     }
     ngOnDestroy()
     {
@@ -76,8 +78,8 @@ export class FormInputComponent implements OnChanges
     // 取得該區域欄位列表
     getGroupList(group: FormGroup): string | any
     {
-
-        let Result = Object.keys(group.value).map(obj =>
+        if (this.groupList) return;
+        this.groupList = Object.keys(group.value).map(obj =>
         {
             let innerControl = group.get(obj)
             if (innerControl?.value !== null && typeof innerControl?.value === 'object')
@@ -96,7 +98,6 @@ export class FormInputComponent implements OnChanges
                 return obj;
             }
         });
-        return Result;
     }
     getListSettings(formArrayName: string)
     {

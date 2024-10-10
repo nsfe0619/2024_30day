@@ -11,15 +11,60 @@
       *ngFor="let row of inputFormArray.controls; let i = index"
       [formGroupName]="i"
     >
-      <td>
-        <input formControlName="list-name" />
-      </td>
-      <td>
-        <input formControlName="list-phone" />
-      </td>
-      <td>
-        <input formControlName="list-mail" />
-      </td>
+      <ng-container
+        *ngTemplateOutlet="
+          editRowNum != i ? displayRow : editRow;
+          context: editRowNum != i
+            ? { inTeplateForm: row, index: i }
+            : { inTeplateForm: subFormGroup, index: i }
+        "
+      ></ng-container>
+    </tr>
+    <tr>
+      <ng-container
+        *ngTemplateOutlet="
+          editRowNum < inputFormArray.controls.length ? emptyRow : addRow;
+          context: { inTeplateForm: subFormGroup }
+        "
+      >
+      </ng-container>
     </tr>
   </tbody>
 </table>
+
+<ng-template #emptyRow></ng-template>
+<ng-template #displayRow let-fg="inTeplateForm" let-i="index">
+  <td *ngFor="let key of Object.keys(fg.value)">
+    {{ fg.get(key)?.value }}
+  </td>
+  <button (click)="edit(i)">編輯</button>
+  <button (click)="delete(i)">刪除</button>
+</ng-template>
+
+<ng-template #editRow let-fg="inTeplateForm" let-i="index">
+  <ng-container *ngIf="fg">
+    <td *ngFor="let key of Object.keys(fg?.value)">
+      <app-field
+        [fieldSetting]="this.shareService.getSetting(this.fieldSettings, key)"
+        [control]="shareService.getControl(fg, key)"
+      ></app-field>
+    </td>
+    <td>
+      <button (click)="save(i)">儲存</button>
+      <button (click)="cancel()">取消</button>
+    </td>
+  </ng-container>
+</ng-template>
+<ng-template #addRow let-fg="inTeplateForm">
+  <ng-container *ngIf="fg">
+    <td *ngFor="let key of Object.keys(fg?.value)">
+      <app-field
+        [fieldSetting]="this.shareService.getSetting(this.fieldSettings, key)"
+        [control]="shareService.getControl(fg, key)"
+      ></app-field>
+    </td>
+    <td>
+      <button (click)="add()">新增</button>
+    </td>
+  </ng-container>
+</ng-template>
