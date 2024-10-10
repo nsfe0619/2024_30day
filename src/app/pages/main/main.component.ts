@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageSetting } from 'src/app/shared/component/form/element/field-setting.model';
 import { DataService } from 'src/app/shared/service/data.service';
+import { DialogService } from 'src/app/shared/service/dialog.service';
 
 @Component({
     selector: 'app-main',
@@ -12,7 +13,9 @@ export class MainComponent implements OnInit
     page = 0;
     pageSettings!: PageSetting[]
 
-    constructor(private dataService: DataService) { }
+    constructor(private dataService: DataService,
+        private dialogService: DialogService,
+    ) { }
 
     ngOnInit(): void
     {
@@ -35,5 +38,9 @@ export class MainComponent implements OnInit
     {
         if (this.page > 0)
             this.page = Number(this.page) - 1;
+    }
+    open()
+    {
+        this.dialogService.openDialog();
     }
 }
