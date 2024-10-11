@@ -8,11 +8,13 @@ import { MainComponent } from './pages/main/main.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MockInterceptor } from './core/intercept/mock.interceptor';
+import { SettingComponent } from './pages/setting/setting.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        MainComponent
+        MainComponent,
+        SettingComponent
     ],
     imports: [
         BrowserModule,

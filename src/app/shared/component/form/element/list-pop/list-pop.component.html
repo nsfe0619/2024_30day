@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th *ngFor="let title of titleArr">
-        {{ title }}
+        {{ title.cname }}
       </th>
       <th>
         <button (click)="openAdd()">新增</button>
@@ -25,8 +25,8 @@
 </table>
 
 <ng-template #displayRow let-fg="inTeplateForm" let-i="index">
-  <td *ngFor="let key of Object.keys(fg.value)">
-    {{ fg.get(key)?.value }}
+  <td *ngFor="let key of titleArr">
+    {{ fg.get(key.name)?.value }}
   </td>
   <button (click)="openEdit(i)">編輯</button>
   <button (click)="delete(i)">刪除</button>

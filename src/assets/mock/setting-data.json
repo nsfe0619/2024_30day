@@ -1,0 +1,93 @@
+{
+  "pageSettings": [
+    {
+      "title": "設定頁面",
+      "fieldSettings": [
+        {
+          "name": "settings",
+          "cname": "設定頁面",
+          "inputType": "list",
+          "groupName": "settings",
+          "groupType": "listPopup",
+          "placeholder": "formControlName",
+          "defaultValue": ""
+        },
+        {
+          "name": "name",
+          "cname": "id",
+          "inputType": "text",
+          "groupName": "settings",
+          "groupType": "listPopup",
+          "placeholder": "formControlName",
+          "defaultValue": ""
+        },
+        {
+          "name": "cname",
+          "cname": "欄位名稱",
+          "inputType": "text",
+          "groupName": "settings",
+          "groupType": "listPopup",
+          "placeholder": "欄位名稱"
+        },
+        {
+          "name": "inputType",
+          "cname": "欄位類型",
+          "inputType": "select",
+          "groupName": "settings",
+          "groupType": "listPopup",
+          "placeholder": "請選擇類型",
+          "options": [
+            {
+              "label": "text",
+              "value": "text"
+            },
+            {
+              "label": "tel",
+              "value": "tel"
+            },
+            {
+              "label": "number",
+              "value": "number"
+            },
+            {
+              "label": "password",
+              "value": "password"
+            },
+            {
+              "label": "select",
+              "value": "select"
+            },
+            {
+              "label": "radio",
+              "value": "radio"
+            },
+            {
+              "label": "checkbox",
+              "value": "checkbox"
+            },
+            {
+              "label": "list",
+              "value": "list"
+            }
+          ]
+        },
+        {
+          "name": "placeholder",
+          "cname": "placeholder",
+          "inputType": "text",
+          "groupName": "settings",
+          "groupType": "listPopup",
+          "placeholder": "placeholder"
+        },
+        {
+          "name": "defaultValue",
+          "cname": "預設值",
+          "inputType": "text",
+          "groupName": "settings",
+          "groupType": "listPopup",
+          "placeholder": "預設值"
+        }
+      ]
+    }
+  ]
+}

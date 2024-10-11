@@ -14,7 +14,6 @@ export class MainComponent implements OnInit
     pageSettings!: PageSetting[]
 
     constructor(private dataService: DataService,
-        private dialogService: DialogService,
     ) { }
 
     ngOnInit(): void

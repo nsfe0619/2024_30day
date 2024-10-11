@@ -161,7 +161,7 @@
           "inputType": "text",
           "placeholder": "請輸入文字",
           "defaultValue": "123",
-          "validator": ["required", "maxLength:3"]
+          "validator": ["required"]
         },
         {
           "name": "number1",
@@ -261,7 +261,7 @@
           "inputType": "text",
           "placeholder": "請輸入文字",
           "defaultValue": "123",
-          "validator": ["required", "maxLength:3"]
+          "validator": ["required"]
         },
         {
           "name": "number1",

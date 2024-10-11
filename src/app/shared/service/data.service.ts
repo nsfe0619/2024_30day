@@ -16,6 +16,11 @@ export class DataService
         // return this.http.get(this.jsonUrl);
         return this.http.get('main');
     }
+    getSettingData(): Observable<any>
+    {
+        // return this.http.get(this.jsonUrl);
+        return this.http.get('setting');
+    }
 
     getAddressData(): Observable<any>
     {

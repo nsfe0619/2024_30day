@@ -18,7 +18,7 @@ export class ListPopComponent implements OnInit
     @Input() inputForm!: any;
     innerFormArray!: FormArray;
     subFormGroup!: FormGroup;
-    titleArr!: string[];
+    titleArr!: any[];
     Object = Object;
     editRowNum = 1;
     dialogPagingSetting!: PageSetting;
@@ -59,7 +59,7 @@ export class ListPopComponent implements OnInit
                     if (!!setting.validator.find(v => v == 'required')) setting.required = true;
                     newControl.addValidators(this.validatorService.getValidators(setting.validator));
                 }
-                this.titleArr.push(setting.cname);
+                this.titleArr.push(setting);
                 this.subFormGroup.addControl(setting.name, newControl);
             } else
             {
@@ -126,5 +126,4 @@ export class ListPopComponent implements OnInit
     {
         this.inputFormArray.removeAt(index);
     }
-
 }
